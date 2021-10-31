@@ -16,6 +16,8 @@
 		AB295582272EFB4F00B8E624 /* RecordingAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB295581272EFB4F00B8E624 /* RecordingAppTests.swift */; };
 		AB29558C272EFB4F00B8E624 /* RecordingAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB29558B272EFB4F00B8E624 /* RecordingAppUITests.swift */; };
 		AB29558E272EFB4F00B8E624 /* RecordingAppUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB29558D272EFB4F00B8E624 /* RecordingAppUITestsLaunchTests.swift */; };
+		AB2955A0272EFE3A00B8E624 /* RecordWhistleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB29559E272EFE3A00B8E624 /* RecordWhistleViewController.swift */; };
+		AB2955A1272EFE3A00B8E624 /* RecordWhistleViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AB29559F272EFE3A00B8E624 /* RecordWhistleViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +51,8 @@
 		AB295587272EFB4F00B8E624 /* RecordingAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RecordingAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		AB29558B272EFB4F00B8E624 /* RecordingAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordingAppUITests.swift; sourceTree = "<group>"; };
 		AB29558D272EFB4F00B8E624 /* RecordingAppUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordingAppUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		AB29559E272EFE3A00B8E624 /* RecordWhistleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordWhistleViewController.swift; sourceTree = "<group>"; };
+		AB29559F272EFE3A00B8E624 /* RecordWhistleViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RecordWhistleViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,12 +103,11 @@
 		AB295569272EFB4D00B8E624 /* RecordingApp */ = {
 			isa = PBXGroup;
 			children = (
-				AB29556A272EFB4D00B8E624 /* AppDelegate.swift */,
-				AB29556C272EFB4D00B8E624 /* SceneDelegate.swift */,
-				AB29556E272EFB4D00B8E624 /* ViewController.swift */,
-				AB295570272EFB4D00B8E624 /* Main.storyboard */,
+				AB29559D272EFB8100B8E624 /* Models */,
+				AB29559C272EFB7100B8E624 /* Storyboards */,
+				AB29559B272EFB6900B8E624 /* Delegates */,
+				AB29559A272EFB5F00B8E624 /* ViewControllers */,
 				AB295573272EFB4E00B8E624 /* Assets.xcassets */,
-				AB295575272EFB4E00B8E624 /* LaunchScreen.storyboard */,
 				AB295578272EFB4F00B8E624 /* Info.plist */,
 			);
 			path = RecordingApp;
@@ -125,6 +128,41 @@
 				AB29558D272EFB4F00B8E624 /* RecordingAppUITestsLaunchTests.swift */,
 			);
 			path = RecordingAppUITests;
+			sourceTree = "<group>";
+		};
+		AB29559A272EFB5F00B8E624 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				AB29556E272EFB4D00B8E624 /* ViewController.swift */,
+				AB29559E272EFE3A00B8E624 /* RecordWhistleViewController.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		AB29559B272EFB6900B8E624 /* Delegates */ = {
+			isa = PBXGroup;
+			children = (
+				AB29556A272EFB4D00B8E624 /* AppDelegate.swift */,
+				AB29556C272EFB4D00B8E624 /* SceneDelegate.swift */,
+			);
+			path = Delegates;
+			sourceTree = "<group>";
+		};
+		AB29559C272EFB7100B8E624 /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				AB29559F272EFE3A00B8E624 /* RecordWhistleViewController.xib */,
+				AB295570272EFB4D00B8E624 /* Main.storyboard */,
+				AB295575272EFB4E00B8E624 /* LaunchScreen.storyboard */,
+			);
+			path = Storyboards;
+			sourceTree = "<group>";
+		};
+		AB29559D272EFB8100B8E624 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -233,6 +271,7 @@
 			files = (
 				AB295577272EFB4E00B8E624 /* LaunchScreen.storyboard in Resources */,
 				AB295574272EFB4E00B8E624 /* Assets.xcassets in Resources */,
+				AB2955A1272EFE3A00B8E624 /* RecordWhistleViewController.xib in Resources */,
 				AB295572272EFB4D00B8E624 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -260,6 +299,7 @@
 			files = (
 				AB29556F272EFB4D00B8E624 /* ViewController.swift in Sources */,
 				AB29556B272EFB4D00B8E624 /* AppDelegate.swift in Sources */,
+				AB2955A0272EFE3A00B8E624 /* RecordWhistleViewController.swift in Sources */,
 				AB29556D272EFB4D00B8E624 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
