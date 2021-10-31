@@ -19,6 +19,8 @@ class RecordWhistleViewController: UIViewController, AVAudioRecorderDelegate {
         MARK: Layout Properties
      */
     var recordButton: UIButton!//We will use this button to record the user's audio
+    var playButton: UIButton! //This audio will play the sound when its finished
+    var whistlePlayer: AVAudioPlayer!
     var stackView: UIStackView!//This will be placed inside of the view
     
     
@@ -106,6 +108,18 @@ class RecordWhistleViewController: UIViewController, AVAudioRecorderDelegate {
         
         //Adding the button to our stackView
         stackView.addArrangedSubview(recordButton)
+        
+        //Creating our playButton
+        playButton = UIButton()
+        //Adding styles to our play button
+        playButton.translatesAutoresizingMaskIntoConstraints = false
+        playButton.setTitle("Tap to Play", for: .normal)
+        playButton.isHidden = true
+        playButton.alpha = 0
+        playButton.titleLabel?.font = UIFont.preferredFont(forTextStyle: .title1)
+        playButton.addTarget(self, action: #selector(playTapped), for: .touchUpInside)
+        //Adding the play button to the subview
+        stackView.addArrangedSubview(playButton)
     }
 
     /*
@@ -198,6 +212,14 @@ class RecordWhistleViewController: UIViewController, AVAudioRecorderDelegate {
         //If the recording was successful
         if success {
             recordButton.setTitle("Tap to Re-record", for: .normal)
+            //We want to show and hide that play button when needed, meaning that we show it when recording finished successfully.
+            if playButton.isHidden {
+                UIView.animate(withDuration: 0.35) { [unowned self] in
+                    self.playButton.isHidden = false
+                    self.playButton.alpha = 1
+                }
+            }
+            //Adding a barbutton item
             navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Next", style: .plain, target: self, action: #selector(nextTapped))
         } else {
             //If it didnt succeed
@@ -210,22 +232,44 @@ class RecordWhistleViewController: UIViewController, AVAudioRecorderDelegate {
         }
     }
     
-    //A method to silence the error
-    @objc func nextTapped() {
-        
-    }
-    
     /*
      MARK: Actions
      */
+    //if the next bar button item got clicked
+    @objc func nextTapped() {
+        let vc = SelectGenreViewController()
+        navigationController?.pushViewController(vc, animated: true)
+    }
+    
     //When the record button gets tapped, we will trigger that method
     @objc func recordTapped() {
         //Start recording if there is no recording operation going
         if whistleRecorder == nil {
             startRecording()
+            //hide it if the user taps to re-record.
+            if !playButton.isHidden {
+                UIView.animate(withDuration: 0.35) { [unowned self] in
+                    self.playButton.isHidden = true
+                    self.playButton.alpha = 0
+                }
+            }
         } else {
             //otherwise stop recording
             finishRecording(success: true)
+        }
+    }
+    
+    //When the player button gets tapped
+    @objc func playTapped() {
+        let audioURL = RecordWhistleViewController.getWhistleURL()
+
+        do {
+            whistlePlayer = try AVAudioPlayer(contentsOf: audioURL)
+            whistlePlayer.play()
+        } catch {
+            let ac = UIAlertController(title: "Playback failed", message: "There was a problem playing your whistle; please try re-recording.", preferredStyle: .alert)
+            ac.addAction(UIAlertAction(title: "OK", style: .default))
+            present(ac, animated: true)
         }
     }
     
