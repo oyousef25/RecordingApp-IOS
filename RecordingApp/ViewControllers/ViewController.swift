@@ -13,7 +13,7 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         
         //Setting the viewController's title
-        title = "What's that Whistle?"
+        self.title = "What's that Whistle?"
         
         //Adding a nbar button item
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addWhistle))
